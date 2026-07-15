@@ -7,7 +7,7 @@ export default function Projects() {
     <section className="section" id="projects">
       <div className="section-head reveal">
         <h2 className="section-title">
-          <span className="section-num">02.</span> Selected Work
+          <span className="section-num">03.</span> Selected Work
         </h2>
       </div>
 

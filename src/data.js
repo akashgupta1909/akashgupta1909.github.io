@@ -1,192 +1,315 @@
 // All portfolio content in one place. Edit here to update the site.
+// Content sourced from Akash's real resume + GitHub (github.com/akashgupta1909).
 
 export const social = {
-  email: 'hey@akash.dev',
-  github: 'https://github.com/akashgupta1909',
-  linkedin: 'https://www.linkedin.com/in/akashgupta1909',
-  twitter: 'https://twitter.com/akashgupta1909',
-  resume: '/resume.pdf',
-}
+  email: "akash.gupta.anup@gmail.com",
+  github: "https://github.com/akashgupta1909",
+  linkedin: "https://www.linkedin.com/in/akash-gupta-1909/",
+  resume: "/resume.pdf",
+};
 
 export const nav = [
-  { num: '01.', label: 'about', href: '#about' },
-  { num: '02.', label: 'skills', href: '#skills' },
-  { num: '03.', label: 'projects', href: '#projects' },
-  { num: '04.', label: 'experience', href: '#experience' },
-]
+  { num: "01.", label: "about", href: "#about" },
+  { num: "02.", label: "experience", href: "#experience" },
+  { num: "03.", label: "projects", href: "#projects" },
+  { num: "04.", label: "skills", href: "#skills" },
+];
 
 export const hero = {
-  eyebrow: '> Staff Software Engineer · Platform & Distributed Systems',
-  name: 'Akash Gupta',
-  tagline: 'I architect systems that scale to millions.',
+  eyebrow: "> Software Engineer · Full-Stack · Payments & Backend Systems",
+  name: "Akash Gupta",
+  tagline: "I build products that reach millions of users.",
   blurb:
-    'Staff engineer with 11+ years designing distributed systems, leading platform teams, and shipping products used by tens of millions. I turn ambiguous, org-wide problems into durable architecture — and grow the engineers around me while I do it.',
+    "Software Engineer at Coinbase and an IIIT Gwalior grad. Over the last few years I've shipped a React frontend serving 1M+ users at KoinX, wired up payments across India & Australia, and built backend systems in Go & Node. I like clean abstractions, fast caches, and shipping things people actually use.",
   stats: [
-    { value: '11+', label: 'years exp' },
-    { value: '50M+', label: 'daily requests served' },
-    { value: '30+', label: 'engineers mentored' },
+    { value: "3+", label: "years shipping code" },
+    { value: "1M+", label: "users reached" },
+    { value: "4×", label: "hackathon podiums" },
   ],
-}
+};
 
 // Tokenized code lines for the hero terminal. Each token: [text, colorKey]
 export const heroCode = [
-  [['const ', 'key'], ['engineer', 'id'], [' = ', 'punct'], ['{', 'punct']],
-  [['  name', 'fn'], [': ', 'punct'], ["'Akash Gupta'", 'str'], [',', 'punct']],
-  [['  role', 'fn'], [': ', 'punct'], ["'Staff Software Engineer'", 'str'], [',', 'punct']],
   [
-    ['  stack', 'fn'], [': [', 'punct'], ["'TS'", 'str'], [', ', 'punct'],
-    ["'React'", 'str'], [', ', 'punct'], ["'Go'", 'str'], [', ', 'punct'],
-    ["'AWS'", 'str'], ['],', 'punct'],
+    ["const ", "key"],
+    ["engineer", "id"],
+    [" = ", "punct"],
+    ["{", "punct"],
   ],
-  [['  shipsFast', 'fn'], [': ', 'punct'], ['true', 'num'], [',', 'punct']],
-  [['}', 'punct']],
-  [['', 'punct']],
   [
-    ['engineer', 'id'], ['.', 'punct'], ['build', 'fn'], ['(', 'punct'],
-    ['ideas', 'id'], [');', 'punct'],
+    ["  name", "fn"],
+    [": ", "punct"],
+    ["'Akash Gupta'", "str"],
+    [",", "punct"],
   ],
-  [['// → deployed to production ✓', 'comment']],
-]
+  [
+    ["  role", "fn"],
+    [": ", "punct"],
+    ["'Software Engineer @ Coinbase'", "str"],
+    [",", "punct"],
+  ],
+  [
+    ["  stack", "fn"],
+    [": [", "punct"],
+    ["'TS'", "str"],
+    [", ", "punct"],
+    ["'React'", "str"],
+    [", ", "punct"],
+    ["'Node'", "str"],
+    [", ", "punct"],
+    ["'Go'", "str"],
+    ["],", "punct"],
+  ],
+  [
+    ["  shipsFast", "fn"],
+    [": ", "punct"],
+    ["true", "num"],
+    [",", "punct"],
+  ],
+  [["}", "punct"]],
+  [["", "punct"]],
+  [
+    ["engineer", "id"],
+    [".", "punct"],
+    ["build", "fn"],
+    ["(", "punct"],
+    ["ideas", "id"],
+    [");", "punct"],
+  ],
+  [["// → shipped to 1M+ users ✓", "comment"]],
+];
 
 export const about = {
   paragraphs: [
-    "I'm Akash — a staff software engineer working at the intersection of deep technical work and technical leadership. Over the past decade I've designed platforms that stay fast and reliable under real-world load, and set architectural direction for teams shipping to millions of people.",
-    'I care about the fundamentals — clean abstractions, strong observability, and helping engineers move quickly with confidence. I lead as much through RFCs, design reviews, and mentorship as through code, and I still love getting deep into a gnarly performance or reliability problem.',
+    "I'm Akash — a full-stack engineer who likes living at the boundary of a clean React frontend and a fast, reliable backend. I did my Integrated B.Tech + M.Tech in IT at IIIT Gwalior, and spent most of college shipping real products through internships instead of just reading about them.",
+    "At KoinX I led the frontend architecture for a crypto-tax platform used by over a million people, integrated PhonePe & Stripe payments, and cut response times ~85% with Redis. At Coinbase I built internal tooling used by 10k+ employees. Outside work I build backend systems in Go — mostly because I want to understand how things actually work under the hood.",
   ],
   currently: [
-    'Leading mobile platform architecture at Coinbase',
-    'Mentoring senior & staff engineers across 3 teams',
-    'Writing about distributed systems & eng leadership',
+    "Software Engineer at Coinbase",
+    "Building a self-hosted expense tracker in Go",
+    "Going deep on backend & distributed systems",
   ],
   card: {
-    initials: 'AK',
-    name: 'Akash Gupta',
-    role: 'Staff Engineer · SF / Remote',
-    status: 'Open to Staff / Principal roles',
+    initials: "AK",
+    name: "Akash Gupta",
+    role: "Software Engineer · Gwalior, India",
+    status: "Open to full-time SWE roles",
   },
-}
+};
 
 export const skillGroups = [
-  { icon: '{ }', title: 'Languages', tags: ['TypeScript', 'JavaScript', 'Go', 'Python', 'Rust', 'SQL'] },
-  { icon: '</>', title: 'Frontend', tags: ['React', 'React Native', 'Next.js', 'Redux', 'Tailwind', 'GraphQL'] },
-  { icon: '[ ]', title: 'Backend', tags: ['Node.js', 'gRPC', 'PostgreSQL', 'Redis', 'Kafka', 'REST'] },
-  { icon: '~/', title: 'Cloud & DevOps', tags: ['AWS', 'Docker', 'Kubernetes', 'Terraform', 'CI/CD', 'Datadog'] },
   {
-    icon: '◈',
-    title: 'Architecture & Leadership',
-    badge: 'staff-level',
+    icon: "{ }",
+    title: "Languages",
+    tags: ["JavaScript", "TypeScript", "Go", "Solidity", "C/C++", "SQL"],
+  },
+  {
+    icon: "</>",
+    title: "Frontend",
+    tags: ["React", "Next.js", "Redux", "Relay", "HTML / CSS", "i18next"],
+  },
+  {
+    icon: "[ ]",
+    title: "Backend",
+    tags: ["Node.js", "Express", "GraphQL", "REST", "NATS", "gRPC"],
+  },
+  {
+    icon: "~/",
+    title: "Data & Infra",
+    tags: ["MongoDB", "PostgreSQL", "Redis", "Firebase", "Git", "REST API"],
+  },
+  {
+    icon: "◈",
+    title: "Also in my toolkit",
+    badge: "always learning",
     wide: true,
     tags: [
-      'System Design', 'Distributed Systems', 'Event-Driven Arch', 'Observability',
-      'Mentorship', 'Tech Strategy', 'RFCs & Design Reviews', 'Incident Response', 'Team Leadership',
+      "Payments (Stripe · PhonePe · Razorpay)",
+      "Ethereum",
+      "Truffle",
+      "Chai & Mocha",
+      "Bugsnag",
+      "Snowflake",
+      "Okta",
+      "System Design",
+      "Mentoring 300+ students",
     ],
   },
-]
+];
 
 export const projects = [
   {
-    icon: '{ }', name: 'Atlas', flagship: true,
-    desc: 'Redis-compatible, Raft-replicated store I designed and led — now backing 40+ internal services.',
-    metric: 'p99 < 0.8ms', metricSub: '· 40+ services', tags: ['Go', 'Raft', 'gRPC'],
+    icon: "{ }",
+    name: "Internal LLM Extension",
+    flagship: true,
+    desc: "Chrome extension giving 10k+ Coinbase employees secure access to internal LLMs — built at Coinbase with React, GraphQL/Relay and Okta auth.",
+    metric: "10k+ employees",
+    metricSub: "· @ Coinbase",
+    tags: ["React", "GraphQL", "Okta"],
   },
   {
-    icon: '</>', name: 'Prism UI',
-    desc: 'Org-wide component system + token pipeline I drove to adoption across 30+ product teams.',
-    metric: '30+ teams', metricSub: '· 50% faster delivery', tags: ['React', 'TypeScript', 'Design Systems'],
+    icon: "</>",
+    name: "KoinX Platform",
+    flagship: true,
+    desc: "Scalable React frontend for a crypto-tax platform serving 1M+ users, with PhonePe & Stripe payments and ~85% faster responses via Redis caching.",
+    metric: "1M+ users",
+    metricSub: "· 85% faster",
+    tags: ["React", "Node.js", "Redis"],
   },
   {
-    icon: '[ ]', name: 'FlowPay', flagship: true,
-    desc: 'Offline-first payments platform I architected for exactly-once, idempotent settlement at scale.',
-    metric: '$2B+ / yr', metricSub: '· 99.99% uptime', tags: ['Go', 'Event Sourcing', 'React Native'],
+    icon: "[ ]",
+    name: "Expense Tracker",
+    desc: "Self-hosted expense tracker in Go — because I'd rather not trust third-party apps with my financial data.",
+    metric: "self-hosted",
+    metricSub: "· personal data, my rules",
+    tags: ["Go", "SQLite", "CLI"],
   },
   {
-    icon: '~/', name: 'DevPulse',
-    desc: 'Streaming observability platform with real-time anomaly detection I led end-to-end.',
-    metric: '10M events/min', metricSub: '· sub-second alerts', tags: ['Kafka', 'ClickHouse', 'Go'],
+    icon: "~/",
+    name: "Real-Time Leaderboard",
+    desc: "Low-latency real-time leaderboard service built on Go with Redis sorted sets and MongoDB for persistence.",
+    metric: "real-time",
+    metricSub: "· Go + Redis",
+    tags: ["Go", "Redis", "MongoDB"],
   },
   {
-    icon: '</>', name: 'Forge',
-    desc: 'Self-hosted CI orchestrator with distributed caching I built to slash org-wide build times.',
-    metric: '−60% builds', metricSub: '· $1.4M/yr saved', tags: ['Rust', 'Kubernetes', 'Caching'],
+    icon: "</>",
+    name: "Caching Proxy",
+    desc: "An HTTP caching proxy server in Go backed by Redis — a build-to-learn project to internalize the fundamentals.",
+    metric: "from scratch",
+    metricSub: "· systems deep-dive",
+    tags: ["Go", "Redis", "HTTP"],
   },
   {
-    icon: '{*}', name: 'Lexi', flagship: true,
-    desc: 'LLM-powered code-review platform I shipped to catch bugs before they reach main.',
-    metric: '35% of bugs', metricSub: '· caught pre-merge', tags: ['Python', 'LLMs', 'AWS'],
+    icon: "{*}",
+    name: "Secure-Morph",
+    desc: "Blockchain user-verification scheme using chameleon hashing, implemented in Solidity on Ethereum.",
+    metric: "research",
+    metricSub: "· chameleon hashing",
+    tags: ["Solidity", "Ethereum", "Web3"],
   },
-]
+];
 
 export const projectsNote =
-  'Most of my work lives in private & enterprise repos — these are anonymized case studies. Happy to walk through the architecture and trade-offs in a conversation.'
+  "A mix of production work (under NDA at Coinbase & KoinX) and side projects I build to go deep on systems. Most of the personal ones are open on GitHub — happy to walk through any of it.";
 
 export const architecture = {
-  eyebrow: '// reference architecture — FlowPay platform',
-  title: 'How I design the pieces to fit together',
+  eyebrow: "// reference architecture — crypto-tax platform (anonymized)",
+  title: "How I fit the pieces together",
   subtitle:
-    'An anonymized view of a payments platform I architected — event-driven, resilient, and horizontally scalable end to end.',
+    "An anonymized view of the KoinX platform I helped build — a React frontend on Node services, Redis-cached and event-driven with NATS, serving over a million users.",
   columns: [
-    { label: 'CLIENTS', items: ['Web App', 'Mobile App', 'Partner API'] },
-    { label: 'EDGE / GATEWAY', items: ['API Gateway', 'Auth · JWT', 'Rate Limiter'] },
-    { label: 'SERVICES', items: ['Payments Svc', 'Ledger Svc', 'Risk Engine', 'Notifications'] },
-    { label: 'DATA & STREAMING', items: ['PostgreSQL', 'Redis Cache', 'Kafka Bus', 'S3 / Archive'] },
+    { label: "CLIENTS", items: ["Web App", "Mobile Web", "Partner API"] },
+    {
+      label: "EDGE / API",
+      items: ["Node / Express API", "Auth", "Rate Limiter"],
+    },
+    {
+      label: "SERVICES",
+      items: ["Tax Engine", "Payments Svc", "Sync Workers", "Notifications"],
+    },
+    {
+      label: "DATA & EVENTS",
+      items: ["MongoDB", "Redis Cache", "NATS Bus", "PostgreSQL"],
+    },
   ],
   features: [
-    '⟳ exactly-once, idempotent settlement',
-    '◎ 99.99% uptime SLA',
-    '⚡ p99 < 120ms end-to-end',
-    '⇄ horizontally sharded by tenant',
+    "⟳ NATS event-driven sync",
+    "⚡ ~85% faster via Redis caching",
+    "◎ 1M+ users served",
+    "⇄ PhonePe + Stripe payments",
   ],
-}
+};
 
 export const experience = [
   {
-    period: '2021 — Present', role: 'Staff Software Engineer', company: '@ Coinbase',
-    desc: 'Technical lead for the Retail mobile platform serving 80M+ users. I own the architecture of the org-wide screen framework, drove a 40% cold-start improvement, and mentor a cohort of senior and staff engineers.',
-    tags: ['Architecture', 'React Native', 'TypeScript', 'GraphQL'],
+    period: "May 2024 — Aug 2024 | June 2025 — Present",
+    role: "Software Engineer",
+    company: "@ Coinbase",
+    desc: "Started as an SWE Intern and stayed on. Built a Chrome extension giving 10k+ internal employees access to internal LLMs — React with GraphQL/Relay, Okta auth, plus Bugsnag error monitoring and Snowflake analytics.",
+    tags: ["React", "GraphQL", "Relay", "Okta"],
   },
   {
-    period: '2018 — 2021', role: 'Senior Software Engineer', company: '@ Stripe',
-    desc: 'Owned payment-orchestration services moving billions in volume. Designed an idempotent retry engine, led the on-call rotation, and cut failed-charge rates by 18%.',
-    tags: ['Go', 'gRPC', 'Kafka', 'PostgreSQL'],
+    period: "May 2022 — May 2024 | Aug 2024 - June 2025",
+    role: "Software Development Intern",
+    company: "@ KoinX",
+    desc: "Led a scalable React frontend for a crypto-tax platform used by 1M+ people. Integrated PhonePe & Stripe payments for 10k+ users across India & Australia, and cut response times ~85% with Redis. Used NATS for events and Chai/Mocha for testing.",
+    tags: ["React", "Node.js", "Redis", "NATS"],
   },
   {
-    period: '2014 — 2018', role: 'Software Engineer', company: '@ Atlassian',
-    desc: 'Shipped collaborative features across Jira and led the front-end migration to a modern React + GraphQL stack.',
-    tags: ['React', 'Node.js', 'Redux'],
+    period: "Feb 2022 - May 2022",
+    role: "Software Development Intern",
+    company: "@ MuxEmail",
+    desc: "Drove trigger integrations with Salla impacting 10k+ users across the Middle East, and shipped internationalization with i18next, React and Redux.",
+    tags: ["React", "Redux", "i18next"],
   },
-]
+  {
+    period: "Sept 2021 - Dec 2021",
+    role: "Frontend Intern",
+    company: "@ Levo",
+    desc: "Revamped the frontend architecture for a home-entertainment platform with React & Redux, and integrated the Razorpay payments gateway with accurate payment recording.",
+    tags: ["React", "Redux", "Razorpay"],
+  },
+];
 
 export const funStatus = [
-  { icon: '♪', label: 'NOW PLAYING', value: 'Lofi beats to debug to — chillhop' },
-  { icon: '⚙', label: 'NOW BUILDING', value: 'todo2issue — a CLI that ships your TODOs' },
-  { icon: '❏', label: 'NOW READING', value: 'Designing Data-Intensive Applications' },
-]
+  {
+    icon: "⚙",
+    label: "NOW BUILDING",
+    value: "Expense Tracker — self-hosted, in Go",
+  },
+  {
+    icon: "📚",
+    label: "NOW LEARNING",
+    value: "Distributed systems & Go internals",
+  },
+  {
+    icon: "♪",
+    label: "NOW PLAYING",
+    value: "Lofi beats to debug to — chillhop",
+  },
+];
 
 export const funStats = [
-  { icon: '☕', value: '9,214', label: 'cups of coffee' },
-  { icon: '🐛', value: '38,500', label: 'bugs squashed' },
-  { icon: '🦆', value: '180', label: 'rubber ducks consulted' },
-  { icon: '⌨', value: '11', label: 'keyboards worn out' },
-]
+  { icon: "☕", value: "9,214", label: "cups of coffee" },
+  { icon: "🐛", value: "3,800", label: "bugs squashed" },
+  { icon: "🏆", value: "4", label: "hackathon podiums" },
+  { icon: "👨‍🏫", value: "300+", label: "students taught" },
+];
 
 export const jokes = [
-  { q: 'Why do programmers prefer dark mode?', a: 'Because light attracts bugs. 🐛' },
-  { q: 'How many programmers does it take to change a light bulb?', a: "None — that's a hardware problem." },
-  { q: 'Why do Java developers wear glasses?', a: "Because they don't C#." },
-  { q: "Why was the function sad after a great date?", a: "It never got a callback." },
-  { q: 'A SQL query walks into a bar,', a: 'walks up to two tables and asks: "Can I join you?"' },
-  { q: 'Why did the developer go broke?', a: 'Because he used up all his cache. 💸' },
-]
+  {
+    q: "Why do programmers prefer dark mode?",
+    a: "Because light attracts bugs. 🐛",
+  },
+  {
+    q: "How many programmers does it take to change a light bulb?",
+    a: "None — that's a hardware problem.",
+  },
+  { q: "Why do Java developers wear glasses?", a: "Because they don't C#." },
+  {
+    q: "Why was the function sad after a great date?",
+    a: "It never got a callback.",
+  },
+  {
+    q: "A SQL query walks into a bar,",
+    a: 'walks up to two tables and asks: "Can I join you?"',
+  },
+  {
+    q: "Why did the developer go broke?",
+    a: "Because he used up all his cache. 💸",
+  },
+];
 
 export const contact = {
-  eyebrow: '05. what’s next?',
-  title: 'Let’s build something great.',
+  eyebrow: "05. what’s next?",
+  title: "Let’s build something great.",
   blurb:
-    "I'm always open to discussing new products, ambitious ideas, or opportunities to build meaningful things together. My inbox is always open — let's talk.",
+    "I'm looking for full-time software engineering roles and always happy to talk about payments, backend systems, or shipping fast. My inbox is always open — let's talk.",
   socials: [
-    { label: 'GitHub', href: social.github },
-    { label: 'LinkedIn', href: social.linkedin },
-    { label: 'X / Twitter', href: social.twitter },
-    { label: 'Email', href: `mailto:${social.email}` },
+    { label: "GitHub", href: social.github },
+    { label: "LinkedIn", href: social.linkedin },
+    { label: "Email", href: `mailto:${social.email}` },
+    { label: "Résumé", href: social.resume },
   ],
-}
+};

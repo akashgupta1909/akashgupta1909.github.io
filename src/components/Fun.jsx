@@ -9,7 +9,7 @@ const seedHistory = [
     cmd: 'cat passions.json',
     out: '{ code: "always", coffee: "religiously", clean_diffs: true }',
   },
-  { cmd: 'sudo hire-me', out: '[✓] access granted · opening mailto:hey@akash.dev …', green: true },
+  { cmd: 'sudo hire-me', out: `[✓] access granted · opening mailto:${social.email} …`, green: true },
 ]
 
 function runCommand(raw) {
@@ -164,9 +164,9 @@ function ContribGraph() {
     <div className="contrib reveal">
       <div className="contrib-head">
         <span className="contrib-cmd">
-          $ git log --graph --all <span>· career: 11 yrs</span>
+          $ git log --graph --all <span>· since 2020</span>
         </span>
-        <span className="contrib-total">4,120 contributions · incl. private &amp; enterprise</span>
+        <span className="contrib-total">building in public &amp; private repos · github.com/akashgupta1909</span>
       </div>
       <div className="contrib-months">
         {MONTHS.map((m) => (
@@ -182,9 +182,9 @@ function ContribGraph() {
       </div>
       <div className="contrib-foot">
         <div className="contrib-stats">
-          <span className="fire">🔥 512-day streak</span>
+          <span className="fire">🔥 ships on weekends</span>
           <span>peak: 2:00am</span>
-          <span>busiest: Tuesdays</span>
+          <span>busiest: hackathons</span>
         </div>
         <div className="contrib-legend">
           Less

@@ -5,7 +5,7 @@ export default function Experience() {
     <section className="section" id="experience">
       <div className="section-head reveal">
         <h2 className="section-title">
-          <span className="section-num">03.</span> Where I&apos;ve Worked
+          <span className="section-num">02.</span> Where I&apos;ve Worked
         </h2>
       </div>
 
