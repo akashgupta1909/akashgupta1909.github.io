@@ -1,5 +1,6 @@
 import useReveal from './hooks/useReveal'
 import CustomCursor from './components/CustomCursor'
+import ScrollToTop from './components/ScrollToTop'
 import Nav from './components/Nav'
 import Hero from './components/Hero'
 import About from './components/About'
@@ -24,6 +25,7 @@ export default function App() {
         <Fun />
         <Contact />
       </main>
+      <ScrollToTop />
     </>
   )
 }

@@ -1,10 +1,11 @@
 // All portfolio content in one place. Edit here to update the site.
-// Content sourced from Akash's real resume + GitHub (github.com/akashgupta1909).
+// Content sourced from Akash's latest resume + GitHub (github.com/akashgupta1909).
 
 export const social = {
   email: "akash.gupta.anup@gmail.com",
   github: "https://github.com/akashgupta1909",
   linkedin: "https://www.linkedin.com/in/akash-gupta-1909/",
+  leetcode: "https://leetcode.com/u/akashgupta1909/",
   resume: "/resume.pdf",
 };
 
@@ -16,15 +17,15 @@ export const nav = [
 ];
 
 export const hero = {
-  eyebrow: "> Software Engineer · Full-Stack · Payments & Backend Systems",
+  eyebrow: "> Software Engineer @ Coinbase",
   name: "Akash Gupta",
-  tagline: "I build products that reach millions of users.",
+  tagline: "I build platforms that onboard millions.",
   blurb:
-    "Software Engineer at Coinbase and an IIIT Gwalior grad. Over the last few years I've shipped a React frontend serving 1M+ users at KoinX, wired up payments across India & Australia, and built backend systems in Go & Node. I like clean abstractions, fast caches, and shipping things people actually use.",
+    "Software Engineer at Coinbase, where I lead the frontend architecture for Unified Onboarding, a plugin-based system across React & React Native serving 100M+ users. IIIT Gwalior grad. I've shipped payments, accounting, and reconciliation systems at scale, and work across Go, gRPC and GraphQL. I like clean abstractions, fast systems, and shipping things people actually use.",
   stats: [
+    { value: "100M+", label: "users onboarded" },
+    { value: "70%", label: "faster onboarding" },
     { value: "3+", label: "years shipping code" },
-    { value: "1M+", label: "users reached" },
-    { value: "4×", label: "hackathon podiums" },
   ],
 };
 
@@ -53,11 +54,11 @@ export const heroCode = [
     [": [", "punct"],
     ["'TS'", "str"],
     [", ", "punct"],
-    ["'React'", "str"],
-    [", ", "punct"],
-    ["'Node'", "str"],
+    ["'React Native'", "str"],
     [", ", "punct"],
     ["'Go'", "str"],
+    [", ", "punct"],
+    ["'gRPC'", "str"],
     ["],", "punct"],
   ],
   [
@@ -76,24 +77,24 @@ export const heroCode = [
     ["ideas", "id"],
     [");", "punct"],
   ],
-  [["// → shipped to 1M+ users ✓", "comment"]],
+  [["// → onboarding for 100M+ users ✓", "comment"]],
 ];
 
 export const about = {
   paragraphs: [
-    "I'm Akash — a full-stack engineer who likes living at the boundary of a clean React frontend and a fast, reliable backend. I did my Integrated B.Tech + M.Tech in IT at IIIT Gwalior, and spent most of college shipping real products through internships instead of just reading about them.",
-    "At KoinX I led the frontend architecture for a crypto-tax platform used by over a million people, integrated PhonePe & Stripe payments, and cut response times ~85% with Redis. At Coinbase I built internal tooling used by 10k+ employees. Outside work I build backend systems in Go — mostly because I want to understand how things actually work under the hood.",
+    "I'm Akash, a software engineer who likes living where a polished frontend meets a fast, reliable backend. I did my Integrated B.Tech + M.Tech in IT at IIIT Gwalior, and spent most of college shipping real products through internships instead of just reading about them.",
+    "At Coinbase I lead the frontend architecture for Unified Onboarding, a plugin-based system across React & React Native for 100M+ users — where I cut first paint from 7s to 2s and took feature launches from weeks to days. Across two stints at KoinX I built crypto-tax and B2B accounting systems for 1.5M+ people, from payments to inter-wallet reconciliation. I care about clean abstractions, observability, and making launches boring (in the best way).",
   ],
   currently: [
-    "Software Engineer at Coinbase",
-    "Building a self-hosted expense tracker in Go",
-    "Going deep on backend & distributed systems",
+    "Software Engineer at Coinbase — onboarding platform",
+    "Working across React Native, Go, gRPC & GraphQL",
+    "Shipping to a 130M+ user product",
   ],
   card: {
     initials: "AK",
     name: "Akash Gupta",
-    role: "Software Engineer · Gwalior, India",
-    status: "Open to full-time SWE roles",
+    role: "Software Engineer · Bangalore, India",
+    status: "Always up for a good conversation",
   },
 };
 
@@ -101,38 +102,38 @@ export const skillGroups = [
   {
     icon: "{ }",
     title: "Languages",
-    tags: ["JavaScript", "TypeScript", "Go", "Solidity", "C/C++", "SQL"],
+    tags: ["TypeScript", "JavaScript", "Go", "C/C++", "Solidity", "SQL"],
   },
   {
     icon: "</>",
     title: "Frontend",
-    tags: ["React", "Next.js", "Redux", "Relay", "HTML / CSS", "i18next"],
+    tags: ["React", "React Native", "Next.js", "Redux", "Relay", "HTML / CSS"],
   },
   {
     icon: "[ ]",
     title: "Backend",
-    tags: ["Node.js", "Express", "GraphQL", "REST", "NATS", "gRPC"],
+    tags: ["Node.js", "Express", "Go", "gRPC", "GraphQL", "NATS"],
   },
   {
     icon: "~/",
     title: "Data & Infra",
-    tags: ["MongoDB", "PostgreSQL", "Redis", "Firebase", "Git", "REST API"],
+    tags: ["PostgreSQL", "MongoDB", "Redis", "Datadog", "Bugsnag", "Firebase"],
   },
   {
     icon: "◈",
     title: "Also in my toolkit",
-    badge: "always learning",
+    badge: "day-to-day",
     wide: true,
     tags: [
-      "Payments (Stripe · PhonePe · Razorpay)",
-      "Ethereum",
-      "Truffle",
-      "Chai & Mocha",
-      "Bugsnag",
       "Snowflake",
+      "Amplitude",
+      "Eppo",
       "Okta",
+      "Chai & Mocha",
+      "REST APIs",
+      "Payments (Stripe · PhonePe · Razorpay)",
       "System Design",
-      "Mentoring 300+ students",
+      "Git",
     ],
   },
 ];
@@ -140,24 +141,32 @@ export const skillGroups = [
 export const projects = [
   {
     icon: "{ }",
-    name: "Internal LLM Extension",
+    name: "Unified Onboarding",
     flagship: true,
-    desc: "Chrome extension giving 10k+ Coinbase employees secure access to internal LLMs — built at Coinbase with React, GraphQL/Relay and Okta auth.",
-    metric: "10k+ employees",
-    metricSub: "· @ Coinbase",
-    tags: ["React", "GraphQL", "Okta"],
+    desc: "Plugin-based onboarding across React & React Native that replaced Coinbase’s legacy flows — 12+ money-movement flows, 36 reusable plugin contracts, first paint cut from 7s to 2s.",
+    metric: "100M+ users",
+    metricSub: "· 70% faster",
+    tags: ["React Native", "Go", "gRPC"],
   },
   {
     icon: "</>",
     name: "KoinX Platform",
     flagship: true,
-    desc: "Scalable React frontend for a crypto-tax platform serving 1M+ users, with PhonePe & Stripe payments and ~85% faster responses via Redis caching.",
-    metric: "1M+ users",
-    metricSub: "· 85% faster",
+    desc: "Crypto-tax & B2B accounting used by 1.5M+ people — scalable React frontend, PhonePe/Stripe payments, inter-wallet reconciliation, and CSV/PDF/Excel reporting pipelines.",
+    metric: "1.5M+ users",
+    metricSub: "· B2B + B2C",
     tags: ["React", "Node.js", "Redis"],
   },
   {
     icon: "[ ]",
+    name: "Internal LLM Extension",
+    desc: "Chrome extension giving 10k+ Coinbase employees secure access to internal LLMs — React with GraphQL/Relay, Okta auth, plus Bugsnag and Snowflake.",
+    metric: "10k+ employees",
+    metricSub: "· @ Coinbase",
+    tags: ["React", "GraphQL", "Okta"],
+  },
+  {
+    icon: "~/",
     name: "Expense Tracker",
     desc: "Self-hosted expense tracker in Go — because I'd rather not trust third-party apps with my financial data.",
     metric: "self-hosted",
@@ -165,20 +174,12 @@ export const projects = [
     tags: ["Go", "SQLite", "CLI"],
   },
   {
-    icon: "~/",
+    icon: "</>",
     name: "Real-Time Leaderboard",
     desc: "Low-latency real-time leaderboard service built on Go with Redis sorted sets and MongoDB for persistence.",
     metric: "real-time",
     metricSub: "· Go + Redis",
     tags: ["Go", "Redis", "MongoDB"],
-  },
-  {
-    icon: "</>",
-    name: "Caching Proxy",
-    desc: "An HTTP caching proxy server in Go backed by Redis — a build-to-learn project to internalize the fundamentals.",
-    metric: "from scratch",
-    metricSub: "· systems deep-dive",
-    tags: ["Go", "Redis", "HTTP"],
   },
   {
     icon: "{*}",
@@ -191,64 +192,69 @@ export const projects = [
 ];
 
 export const projectsNote =
-  "A mix of production work (under NDA at Coinbase & KoinX) and side projects I build to go deep on systems. Most of the personal ones are open on GitHub — happy to walk through any of it.";
+  "A mix of production work at Coinbase & KoinX (under NDA) and side projects I build to go deep on systems. The personal ones are open on GitHub — happy to walk through any of it.";
 
 export const architecture = {
-  eyebrow: "// reference architecture — crypto-tax platform (anonymized)",
+  eyebrow:
+    "// reference architecture — unified onboarding platform (anonymized)",
   title: "How I fit the pieces together",
   subtitle:
-    "An anonymized view of the KoinX platform I helped build — a React frontend on Node services, Redis-cached and event-driven with NATS, serving over a million users.",
+    "An anonymized view of the plugin-based onboarding platform I lead at Coinbase — React & React Native clients on a Go/gRPC Hybrid Manager, fully configurable and shipping to 100M+ users.",
   columns: [
-    { label: "CLIENTS", items: ["Web App", "Mobile Web", "Partner API"] },
+    { label: "CLIENTS", items: ["Web (React)", "Mobile (RN)", "12+ Flows"] },
     {
-      label: "EDGE / API",
-      items: ["Node / Express API", "Auth", "Rate Limiter"],
+      label: "PLUGIN SYSTEM",
+      items: ["36 Contracts", "Orchestrator", "Config Layer"],
     },
+    { label: "HYBRID MANAGER", items: ["Go Service", "gRPC", "GraphQL"] },
     {
-      label: "SERVICES",
-      items: ["Tax Engine", "Payments Svc", "Sync Workers", "Notifications"],
-    },
-    {
-      label: "DATA & EVENTS",
-      items: ["MongoDB", "Redis Cache", "NATS Bus", "PostgreSQL"],
+      label: "SERVICES & OBS",
+      items: ["Payments", "Compliance", "Wallet", "Datadog"],
     },
   ],
   features: [
-    "⟳ NATS event-driven sync",
-    "⚡ ~85% faster via Redis caching",
-    "◎ 1M+ users served",
-    "⇄ PhonePe + Stripe payments",
+    "⚡ first paint 7s → 2s (−70%)",
+    "◎ 100M+ users onboarded",
+    "⇄ 25+ consumer services migrated",
+    "◈ design-system adoption 98%",
   ],
 };
 
 export const experience = [
   {
-    period: "May 2024 — Aug 2024 | June 2025 — Present",
+    period: "Jun 2025 — Present",
     role: "Software Engineer",
     company: "@ Coinbase",
-    desc: "Started as an SWE Intern and stayed on. Built a Chrome extension giving 10k+ internal employees access to internal LLMs — React with GraphQL/Relay, Okta auth, plus Bugsnag error monitoring and Snowflake analytics.",
+    desc: "Lead frontend architecture and the global rollout of Unified Onboarding across React & React Native, a plugin-based system with 36 reusable contracts and 12+ money-movement flows for 100M+ users. Cut first paint 7s→2s (−70%), built a Go/gRPC/GraphQL Hybrid Manager, and drove client migration across 25+ consumer services (payments, compliance, wallet, institutional).",
+    tags: ["React Native", "Go", "gRPC", "GraphQL"],
+  },
+  {
+    period: "Aug 2024 — May 2025",
+    role: "Software Engineer · Intern",
+    company: "@ KoinX",
+    desc: "Built advanced reporting & filtering for B2B accounting — category, asset-amount, timezone and treasury drill-downs with CSV/PDF/Excel export pipelines. Designed an end-to-end inter-wallet reconciliation workflow (transaction matching, treasury mapping, stablecoin handling) and consolidated accounting APIs, schemas and CRM integrations (Zoho, Stripe).",
+    tags: ["React", "Node.js", "Stripe", "Zoho"],
+  },
+  {
+    period: "May 2024 — Aug 2024",
+    role: "Software Engineer · Intern",
+    company: "@ Coinbase",
+    desc: "Built a Chrome extension giving 10k+ internal employees access to internal LLMs — React with GraphQL/Relay and Okta auth, plus Bugsnag error monitoring and Snowflake analytics.",
     tags: ["React", "GraphQL", "Relay", "Okta"],
   },
   {
-    period: "May 2022 — May 2024 | Aug 2024 - June 2025",
-    role: "Software Development Intern",
+    period: "May 2022 — May 2024",
+    role: "Software Engineer · Intern",
     company: "@ KoinX",
-    desc: "Led a scalable React frontend for a crypto-tax platform used by 1M+ people. Integrated PhonePe & Stripe payments for 10k+ users across India & Australia, and cut response times ~85% with Redis. Used NATS for events and Chai/Mocha for testing.",
+    desc: "Led a scalable React frontend for a crypto-tax platform used by 1M+ people, integrated PhonePe & Stripe payments for 10k+ users across India & Australia, and cut response times ~85% with Redis. Used NATS for events and Chai/Mocha for testing.",
     tags: ["React", "Node.js", "Redis", "NATS"],
   },
   {
-    period: "Feb 2022 - May 2022",
-    role: "Software Development Intern",
+    period: "Feb 2022 — May 2022",
+    role: "Software Engineer · Intern",
     company: "@ MuxEmail",
-    desc: "Drove trigger integrations with Salla impacting 10k+ users across the Middle East, and shipped internationalization with i18next, React and Redux.",
+    desc: "Integrated triggers with Salla impacting 10k+ users across the Middle East, and shipped internationalization with i18next, React and Redux.",
     tags: ["React", "Redux", "i18next"],
-  },
-  {
-    period: "Sept 2021 - Dec 2021",
-    role: "Frontend Intern",
-    company: "@ Levo",
-    desc: "Revamped the frontend architecture for a home-entertainment platform with React & Redux, and integrated the Razorpay payments gateway with accurate payment recording.",
-    tags: ["React", "Redux", "Razorpay"],
   },
 ];
 
@@ -274,7 +280,7 @@ export const funStats = [
   { icon: "☕", value: "9,214", label: "cups of coffee" },
   { icon: "🐛", value: "3,800", label: "bugs squashed" },
   { icon: "🏆", value: "4", label: "hackathon podiums" },
-  { icon: "👨‍🏫", value: "300+", label: "students taught" },
+  { icon: "🚀", value: "130M+", label: "user product shipped" },
 ];
 
 export const jokes = [
@@ -305,7 +311,7 @@ export const contact = {
   eyebrow: "05. what’s next?",
   title: "Let’s build something great.",
   blurb:
-    "I'm looking for full-time software engineering roles and always happy to talk about payments, backend systems, or shipping fast. My inbox is always open — let's talk.",
+    "I'm always up for talking about frontend platforms, payments, or a gnarly systems problem — or just to say hi. My inbox is always open — let's talk.",
   socials: [
     { label: "GitHub", href: social.github },
     { label: "LinkedIn", href: social.linkedin },

@@ -89,11 +89,12 @@ export default function Hero() {
         </motion.div>
 
         <motion.div
-          className="terminal"
+          className="term-wrap"
           initial={{ opacity: 0, y: 40, scale: 0.98 }}
           animate={{ opacity: 1, y: 0, scale: 1 }}
           transition={{ duration: 0.8, delay: 0.35, ease: easeOutExpo }}
         >
+         <div className="terminal code-float">
           <div className="term-bar">
             <span className="dot r" />
             <span className="dot y" />
@@ -121,6 +122,7 @@ export default function Hero() {
               ))}
             </div>
           </div>
+         </div>
         </motion.div>
       </div>
     </header>

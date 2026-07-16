@@ -21,8 +21,6 @@ function runCommand(raw) {
       return { out: 'commands: whoami · joke · coffee --refill · sudo hire-me · open resume · clear' }
     case 'whoami':
       return { out: 'akash — full-stack engineer who ships fast & sweats the details' }
-    case 'joke':
-      return { out: jokes[Math.floor(Math.random() * jokes.length)].q }
     case 'coffee --refill':
       return { out: '☕ refilled. +1 focus. bugs beware.', green: true }
     case 'sudo hire-me':
@@ -36,23 +34,74 @@ function runCommand(raw) {
   }
 }
 
+// Normalize + fuzzy-match so a "close enough" punchline still counts.
+const norm = (s) =>
+  s.toLowerCase().replace(/[^a-z0-9\s]/g, '').replace(/\s+/g, ' ').trim()
+
+function isClosePunchline(guess, answer) {
+  const g = norm(guess)
+  const a = norm(answer)
+  if (!g) return false
+  if (a.includes(g) || g.includes(a)) return true
+  const answerWords = new Set(a.split(' ').filter((w) => w.length > 3))
+  const hits = g.split(' ').filter((w) => w.length > 3 && answerWords.has(w)).length
+  return hits >= 1
+}
+
 function Terminal() {
   const [history, setHistory] = useState(seedHistory)
   const [value, setValue] = useState('')
+  // When set, the next line the user types is treated as a punchline guess.
+  const [pendingJoke, setPendingJoke] = useState(null)
   const bodyRef = useRef(null)
 
-  const submit = (raw) => {
-    if (raw.trim().toLowerCase() === 'clear') {
-      setHistory([])
-      setValue('')
-      return
-    }
-    const res = runCommand(raw)
-    if (res) setHistory((h) => [...h, { cmd: raw, ...res }])
-    setValue('')
+  const scrollDown = () =>
     requestAnimationFrame(() => {
       bodyRef.current?.scrollTo({ top: bodyRef.current.scrollHeight, behavior: 'smooth' })
     })
+
+  const submit = (raw) => {
+    const cmd = raw.trim().toLowerCase()
+
+    if (cmd === 'clear') {
+      setHistory([])
+      setPendingJoke(null)
+      setValue('')
+      return
+    }
+
+    // Awaiting a punchline guess — validate this input instead of running it.
+    if (pendingJoke) {
+      const guess = raw.trim()
+      const verdict = !guess
+        ? { out: `🃏 the answer: ${pendingJoke.a}` }
+        : isClosePunchline(guess, pendingJoke.a)
+          ? { out: `😄 correct! ${pendingJoke.a}`, green: true }
+          : { out: `❌ not quite — the answer: ${pendingJoke.a}` }
+      setHistory((h) => [...h, { cmd: guess || '(gave up)', ...verdict }])
+      setPendingJoke(null)
+      setValue('')
+      scrollDown()
+      return
+    }
+
+    // Start a joke — show the setup, then wait for the user's punchline.
+    if (cmd === 'joke') {
+      const j = jokes[Math.floor(Math.random() * jokes.length)]
+      setHistory((h) => [
+        ...h,
+        { cmd: raw, out: `${j.q}  🤔 (type your punchline, or press Enter to reveal)` },
+      ])
+      setPendingJoke(j)
+      setValue('')
+      scrollDown()
+      return
+    }
+
+    const res = runCommand(raw)
+    if (res) setHistory((h) => [...h, { cmd: raw, ...res }])
+    setValue('')
+    scrollDown()
   }
 
   return (
@@ -85,7 +134,7 @@ function Terminal() {
           <input
             className="term-input"
             value={value}
-            placeholder="type a command…"
+            placeholder={pendingJoke ? 'your punchline… (or Enter to reveal)' : 'type a command…'}
             onChange={(e) => setValue(e.target.value)}
             onKeyDown={(e) => e.key === 'Enter' && submit(value)}
             aria-label="terminal input"
