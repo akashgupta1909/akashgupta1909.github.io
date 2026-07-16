@@ -42,7 +42,18 @@
 
 * { box-sizing: border-box; }
 
+/* <html> is the scroll container (owns the viewport scrollbar). `overflow-x:
+   clip` on <body> prevents horizontal scroll WITHOUT promoting body to a scroll
+   container (clip doesn't force the other axis to `auto`, unlike `hidden`).
+   When the modal locks scrolling it removes this scrollbar; JS measures its
+   width and sets --sbw so the scroller + fixed elements pad by exactly that
+   amount — no sideways shift. */
 html { scroll-behavior: smooth; }
+html.scroll-locked { overflow: hidden; padding-right: var(--sbw, 0px); }
+/* fixed elements reference the viewport (which widens by the scrollbar width
+   when it's hidden), so compensate them too */
+html.scroll-locked .nav { padding-right: var(--sbw, 0px); }
+html.scroll-locked .scroll-top { margin-right: var(--sbw, 0px); }
 
 body {
   margin: 0;
@@ -51,7 +62,7 @@ body {
   font-family: var(--font-body);
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
-  overflow-x: hidden;
+  overflow-x: clip;
 }
 
 a { color: inherit; text-decoration: none; }
@@ -296,10 +307,16 @@ button { font-family: inherit; cursor: pointer; }
   gap: 10px;
   font-weight: 600;
   font-size: 16px;
+  font-family: var(--font-body);
   padding: 15px 28px;
+  border: 1px solid transparent;
   border-radius: 10px;
+  background: transparent;
+  color: inherit;
   transition: transform 0.18s, box-shadow 0.18s, background 0.18s, border-color 0.18s;
 }
+.btn:focus { outline: none; }
+.btn:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
 .btn-primary {
   background: var(--accent);
   color: var(--accent-ink);
@@ -341,7 +358,7 @@ button { font-family: inherit; cursor: pointer; }
   font-family: var(--font-mono); font-size: 14px; line-height: 28px;
   color: var(--faint); text-align: right; user-select: none;
 }
-.code { font-family: var(--font-mono); font-size: 15px; line-height: 28px; white-space: pre; overflow-x: auto; }
+.code { font-family: var(--font-mono); font-size: 15px; line-height: 28px; white-space: pre; overflow-x: auto; min-width: 0; }
 .code-line { min-height: 28px; }
 .t-key { color: var(--syn-key); }
 .t-fn { color: var(--syn-fn); }
@@ -416,24 +433,19 @@ button { font-family: inherit; cursor: pointer; }
   padding: 22px 24px;
   transition: border-color 0.2s, transform 0.2s;
 }
+.skill-card { position: relative; }
 .skill-card:hover {
   border-color: rgba(94, 234, 212, 0.35);
   transform: translateY(-4px);
-  box-shadow: 0 16px 44px -20px rgba(0, 0, 0, 0.7), 0 0 24px -6px rgba(94, 234, 212, 0.25);
+  box-shadow: 0 16px 44px -20px rgba(0, 0, 0, 0.7), 0 0 28px -6px rgba(94, 234, 212, 0.3);
 }
-.skill-card:hover .skill-icon { box-shadow: 0 0 22px rgba(94, 234, 212, 0.5); transform: translateY(-2px) scale(1.05); }
 .skill-card.wide { grid-column: 1 / -1; }
 .skill-head { display: flex; align-items: center; gap: 12px; margin-bottom: 16px; }
 .skill-icon {
   font-family: var(--font-mono); font-size: 14px; color: var(--accent);
   width: 34px; height: 34px; display: grid; place-items: center;
   background: var(--accent-dim); border-radius: 8px;
-  box-shadow: 0 0 16px rgba(94, 234, 212, 0.14);
-  transition: box-shadow 0.25s, transform 0.25s;
-  animation: floatSoft 5s ease-in-out infinite;
 }
-.skill-card:nth-child(2n) .skill-icon { animation-delay: -1.6s; }
-.skill-card:nth-child(3n) .skill-icon { animation-delay: -3.2s; }
 .skill-title { font-family: var(--font-display); font-weight: 600; font-size: 16px; }
 .skill-badge {
   margin-left: auto; font-family: var(--font-mono); font-size: 11px; color: var(--accent);
@@ -466,13 +478,9 @@ button { font-family: inherit; cursor: pointer; }
   font-family: var(--font-mono); font-size: 15px; color: var(--accent);
   width: 40px; height: 40px; display: grid; place-items: center;
   background: var(--accent-dim); border-radius: 9px;
-  box-shadow: 0 0 16px rgba(94, 234, 212, 0.12);
-  transition: box-shadow 0.25s, transform 0.25s;
-  animation: floatSoft 5.5s ease-in-out infinite;
+  transition: transform 0.25s;
 }
-.projects-grid .project-card:nth-child(3n) .project-icon { animation-delay: -1.2s; }
-.projects-grid .project-card:nth-child(3n + 2) .project-icon { animation-delay: -2.8s; }
-.project-card:hover .project-icon { box-shadow: 0 0 26px rgba(94, 234, 212, 0.55); transform: scale(1.08) rotate(-3deg); }
+.project-card:hover .project-icon { transform: scale(1.06); }
 .project-case { font-family: var(--font-mono); font-size: 12px; color: var(--muted); display: inline-flex; gap: 5px; transition: color 0.18s; }
 .project-card:hover .project-case { color: var(--accent); }
 .project-name-row { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
@@ -546,6 +554,19 @@ button { font-family: inherit; cursor: pointer; }
   top: 8px; bottom: 8px; width: 2px;
   background: linear-gradient(var(--accent), var(--border) 45%, transparent);
 }
+/* bright glow that fills the line as you scroll through the section */
+.timeline-progress {
+  position: absolute; left: 7px; transform: translateX(-50%);
+  top: 8px; width: 2px; border-radius: 2px;
+  background: linear-gradient(rgba(94, 234, 212, 0.15), var(--accent));
+  box-shadow: 0 0 12px rgba(94, 234, 212, 0.7);
+  will-change: height;
+}
+.timeline-progress::after {
+  content: ''; position: absolute; bottom: -3px; left: 50%; transform: translateX(-50%);
+  width: 9px; height: 9px; border-radius: 50%; background: var(--accent);
+  box-shadow: 0 0 16px 4px rgba(94, 234, 212, 0.8);
+}
 .exp-item { position: relative; padding-bottom: 44px; }
 .exp-item:last-child { padding-bottom: 0; }
 .exp-item::before {
@@ -602,13 +623,12 @@ button { font-family: inherit; cursor: pointer; }
   border-radius: 11px; padding: 16px 18px; margin-bottom: 12px;
   transition: border-color 0.18s, transform 0.18s;
 }
+.now-card { position: relative; }
 .now-card:hover {
   border-color: rgba(94, 234, 212, 0.3); transform: translateX(4px);
-  box-shadow: 0 0 24px -8px rgba(94, 234, 212, 0.3);
+  box-shadow: 0 0 26px -8px rgba(94, 234, 212, 0.35);
 }
-.now-icon { font-size: 20px; animation: floatSoft 4.5s ease-in-out infinite; }
-.now-card:nth-child(3) .now-icon { animation-delay: -1.5s; }
-.now-card:nth-child(4) .now-icon { animation-delay: -3s; }
+.now-icon { font-size: 20px; }
 .now-meta .k { font-family: var(--font-mono); font-size: 10.5px; letter-spacing: 1px; color: var(--accent); }
 .now-meta .v { font-size: 14px; color: var(--text); margin-top: 3px; }
 
@@ -621,12 +641,9 @@ button { font-family: inherit; cursor: pointer; }
 }
 .fun-stat:hover {
   border-color: rgba(94, 234, 212, 0.3); transform: translateY(-4px);
-  box-shadow: 0 14px 40px -20px rgba(0, 0, 0, 0.7), 0 0 22px -8px rgba(94, 234, 212, 0.28);
+  box-shadow: 0 14px 40px -20px rgba(0, 0, 0, 0.7), 0 0 26px -8px rgba(94, 234, 212, 0.32);
 }
-.fun-stat .icon { font-size: 20px; display: inline-block; animation: floatSoft 5s ease-in-out infinite; }
-.fun-stat:nth-child(2) .icon { animation-delay: -1.2s; }
-.fun-stat:nth-child(3) .icon { animation-delay: -2.4s; }
-.fun-stat:nth-child(4) .icon { animation-delay: -3.6s; }
+.fun-stat .icon { font-size: 20px; }
 .fun-stat .val { font-family: var(--font-display); font-weight: 700; font-size: 28px; margin: 10px 0 2px; display: flex; align-items: center; gap: 8px; }
 .fun-stat .up { color: var(--green); font-size: 13px; }
 .fun-stat .lbl { font-family: var(--font-mono); font-size: 12px; color: var(--muted); }
@@ -696,6 +713,69 @@ button { font-family: inherit; cursor: pointer; }
 .footer .center { color: var(--comment); }
 
 /* =====================================================================
+   CONTACT MODAL
+===================================================================== */
+.modal-backdrop {
+  position: fixed; inset: 0; z-index: 1000;
+  display: grid; place-items: center; padding: 24px;
+  background: rgba(4, 7, 11, 0.72);
+  backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px);
+}
+.modal {
+  position: relative;
+  width: 100%; max-width: 540px;
+  background: var(--bg-panel);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 34px 32px 32px;
+  box-shadow: 0 30px 80px -20px rgba(0, 0, 0, 0.7), 0 0 60px -20px rgba(94, 234, 212, 0.25);
+  max-height: calc(100vh - 48px); overflow-y: auto;
+}
+.modal-close {
+  position: absolute; top: 16px; right: 16px;
+  width: 34px; height: 34px; border-radius: 8px;
+  background: transparent; border: 1px solid var(--border);
+  color: var(--text-2); font-size: 14px;
+  display: grid; place-items: center; transition: all 0.16s;
+}
+.modal-close:hover { border-color: var(--accent); color: var(--accent); }
+.modal-eyebrow { font-family: var(--font-mono); font-size: 13px; color: var(--accent); margin: 0 0 10px; }
+.modal-title { font-family: var(--font-display); font-weight: 700; font-size: 26px; margin: 0 0 8px; letter-spacing: -0.5px; }
+.modal-sub { font-size: 15px; color: var(--text-2); margin: 0 0 24px; }
+.modal-form { display: flex; flex-direction: column; gap: 16px; }
+.modal-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.field { display: flex; flex-direction: column; gap: 7px; }
+.field span { font-family: var(--font-mono); font-size: 12px; color: var(--muted); }
+.field input, .field textarea {
+  width: 100%;
+  background: var(--bg); color: var(--text);
+  border: 1px solid var(--border); border-radius: 10px;
+  padding: 12px 14px; font-family: var(--font-body); font-size: 14.5px;
+  transition: border-color 0.18s, box-shadow 0.18s;
+  resize: vertical;
+}
+.field input::placeholder, .field textarea::placeholder { color: var(--muted-2); }
+.field input:focus, .field textarea:focus {
+  outline: none; border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(94, 234, 212, 0.12);
+}
+.modal-submit { justify-content: center; margin-top: 4px; border: none; }
+.modal-submit:disabled { opacity: 0.6; cursor: default; }
+.modal-err { font-size: 13.5px; color: #ff8f8f; margin: 0; }
+.modal-success { text-align: center; padding: 20px 0 6px; }
+.modal-check {
+  width: 64px; height: 64px; margin: 0 auto 18px; border-radius: 50%;
+  display: grid; place-items: center; font-size: 30px; font-weight: 700;
+  color: var(--accent-ink); background: var(--accent);
+  box-shadow: 0 0 40px -6px rgba(94, 234, 212, 0.6);
+}
+.modal-success .btn { margin-top: 22px; }
+@media (max-width: 520px) {
+  .modal { padding: 28px 20px 24px; }
+  .modal-row { grid-template-columns: 1fr; }
+}
+
+/* =====================================================================
    CUSTOM CURSOR
 ===================================================================== */
 .cursor-dot, .cursor-ring {
@@ -729,6 +809,34 @@ button { font-family: inherit; cursor: pointer; }
 
 /* hero code snippet floats gently after it enters */
 .code-float { animation: floatY 6.5s ease-in-out infinite; }
+
+/* ambient glow that breathes on the cards themselves (a ::after layer, so it
+   never conflicts with the hover lift/shadow the cards already use) */
+@keyframes cardGlowPulse {
+  0%, 100% { opacity: 0.18; }
+  50% { opacity: 0.5; }
+}
+.skill-card::after,
+.project-card::after,
+.fun-stat::after,
+.now-card::after {
+  content: '';
+  position: absolute; inset: 0; border-radius: inherit; pointer-events: none;
+  box-shadow: 0 0 34px -10px rgba(94, 234, 212, 0.6);
+  opacity: 0.18;
+  animation: cardGlowPulse 4.8s ease-in-out infinite;
+}
+.skill-card:nth-child(2n)::after,
+.project-card:nth-child(3n)::after,
+.fun-stat:nth-child(2n)::after,
+.now-card:nth-child(odd)::after { animation-delay: -1.8s; }
+.skill-card:nth-child(3n)::after,
+.project-card:nth-child(3n + 2)::after,
+.fun-stat:nth-child(3n)::after { animation-delay: -3.4s; }
+.skill-card:hover::after,
+.project-card:hover::after,
+.fun-stat:hover::after,
+.now-card:hover::after { opacity: 0.7; animation-play-state: paused; }
 
 .scroll-top {
   position: fixed; right: 28px; bottom: 28px; z-index: 90;
@@ -778,7 +886,25 @@ button { font-family: inherit; cursor: pointer; }
   }
   .projects-grid { grid-template-columns: 1fr; }
   .arch-flow { grid-template-columns: 1fr; }
+  .hero-inner { padding: 40px 22px 56px; gap: 32px; }
   .hero-stats { gap: 28px; }
   .terminal { font-size: 13px; }
   .code { font-size: 13px; }
+}
+
+/* phones — keep the hero from overflowing on narrow viewports */
+@media (max-width: 500px) {
+  .hero { padding-top: 60px; }
+  .hero-inner { padding: 28px 18px 48px; gap: 26px; }
+  .hero-eyebrow { font-size: 13px; margin-bottom: 14px; }
+  .hero-name { font-size: 40px; letter-spacing: -1px; }
+  .hero-tagline { font-size: 25px; margin-top: 4px; }
+  .hero-blurb { font-size: 15.5px; margin-top: 20px; }
+  .hero-ctas { margin-top: 28px; flex-direction: column; align-items: stretch; gap: 12px; }
+  .hero-ctas .btn { width: 100%; justify-content: center; }
+  .hero-stats { gap: 20px 28px; margin-top: 32px; }
+  .hero-stat .num { font-size: 26px; }
+  .code-body { padding: 16px 14px 18px 14px; gap: 12px; }
+  .terminal, .code, .gutter { font-size: 12px; }
+  .term-bar { padding: 12px 14px; }
 }

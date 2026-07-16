@@ -1,4 +1,4 @@
-import { projects, projectsNote } from '../data'
+import { projects, projectsNote } from "../data";
 
 // Motion spec #06 — project card hover: lift, accent border glow, deeper shadow,
 // tags brighten (handled in CSS).
@@ -16,9 +16,6 @@ export default function Projects() {
           <article className="project-card reveal" key={p.name}>
             <div className="project-top">
               <span className="project-icon">{p.icon}</span>
-              <span className="project-case">
-                case study <span>↗</span>
-              </span>
             </div>
             <div className="project-name-row">
               <h3 className="project-name">{p.name}</h3>
@@ -44,5 +41,5 @@ export default function Projects() {
         <span>{projectsNote}</span>
       </div>
     </section>
-  )
+  );
 }

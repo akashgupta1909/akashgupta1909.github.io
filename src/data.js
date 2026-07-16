@@ -11,9 +11,9 @@ export const social = {
 
 export const nav = [
   { num: "01.", label: "about", href: "#about" },
-  { num: "02.", label: "experience", href: "#experience" },
-  { num: "03.", label: "projects", href: "#projects" },
-  { num: "04.", label: "skills", href: "#skills" },
+  { num: "02.", label: "skills", href: "#skills" },
+  { num: "03.", label: "experience", href: "#experience" },
+  { num: "04.", label: "projects", href: "#projects" },
 ];
 
 export const hero = {

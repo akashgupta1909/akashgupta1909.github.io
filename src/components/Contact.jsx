@@ -1,7 +1,10 @@
-import { contact, social } from '../data'
+import { useState } from 'react'
+import { contact } from '../data'
 import MagneticButton from './MagneticButton'
+import ContactModal from './ContactModal'
 
 export default function Contact() {
+  const [open, setOpen] = useState(false)
   return (
     <>
       <section className="section contact" id="contact">
@@ -10,11 +13,13 @@ export default function Contact() {
           <h2 className="contact-title">{contact.title}</h2>
           <p className="contact-blurb">{contact.blurb}</p>
           <MagneticButton
-            href={`mailto:${social.email}`}
+            as="button"
+            type="button"
+            onClick={() => setOpen(true)}
             className="btn btn-primary"
             style={{ display: 'inline-flex' }}
           >
-            Say hello <span>↗</span>
+            Say hello <span className="arrow">↗</span>
           </MagneticButton>
 
           <div className="contact-socials">
@@ -38,6 +43,8 @@ export default function Contact() {
         <span className="center">// scroll-reveal · magnetic buttons · smart-animate transitions</span>
         <span>Designed in Figma · Made with ☕ + TypeScript</span>
       </footer>
+
+      <ContactModal open={open} onClose={() => setOpen(false)} />
     </>
   )
 }

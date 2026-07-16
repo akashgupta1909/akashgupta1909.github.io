@@ -3,7 +3,7 @@ import { motion, useMotionValue, useSpring } from 'framer-motion'
 
 // Motion spec #04 — primary CTAs drift toward the cursor within a small radius,
 // snapping back on leave (spring, stiffness ~260).
-export default function MagneticButton({ as = 'a', className, children, strength = 0.4, ...props }) {
+export default function MagneticButton({ as = 'a', className, children, strength = 0.4, style, ...props }) {
   const ref = useRef(null)
   const x = useMotionValue(0)
   const y = useMotionValue(0)
@@ -27,10 +27,10 @@ export default function MagneticButton({ as = 'a', className, children, strength
     <MotionTag
       ref={ref}
       className={className}
-      style={{ x: sx, y: sy }}
       onMouseMove={onMove}
       onMouseLeave={reset}
       {...props}
+      style={{ ...style, x: sx, y: sy }}
     >
       {children}
     </MotionTag>
