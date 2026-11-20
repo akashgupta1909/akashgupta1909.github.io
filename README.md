@@ -23,7 +23,7 @@ src/
   hooks/useReveal.js  IntersectionObserver scroll-reveal
   components/         Nav, Hero, About, Projects, Architecture,
                       Experience, Fun, Contact, CustomCursor, MagneticButton
-public/resume.pdf     résumé (linked from the nav)
+résumé                linked from data.js (social.resume → tinyurl.com/akash-fs-resume)
 ```
 
 ## Deploy

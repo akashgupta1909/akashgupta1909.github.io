@@ -28,7 +28,7 @@ function runCommand(raw) {
       return { out: '[✓] access granted · opening mailto:' + social.email + ' …', green: true }
     case 'open resume':
       window.open(social.resume, '_blank')
-      return { out: '[✓] opening resume.pdf …', green: true }
+      return { out: '[✓] opening resume …', green: true }
     default:
       return { out: `zsh: command not found: ${raw.trim()} — try \`help\`` }
   }

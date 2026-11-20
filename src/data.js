@@ -6,7 +6,7 @@ export const social = {
   github: "https://github.com/akashgupta1909",
   linkedin: "https://www.linkedin.com/in/akash-gupta-1909/",
   leetcode: "https://leetcode.com/u/akashgupta1909/",
-  resume: "/resume.pdf",
+  resume: "https://tinyurl.com/akash-fs-resume",
 };
 
 export const nav = [
